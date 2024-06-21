@@ -2,7 +2,7 @@ class Movemaster:
     def nesting(self):
         print("NST")
 
-    def orgigin(self):
+    def origin(self):
         print("OG")
 
     def write_hand(self):
