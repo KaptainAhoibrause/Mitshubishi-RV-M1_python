@@ -16,6 +16,9 @@ class Movemaster:
     def set_speed(self):
         print("SP <0-9> <H or L>")  # H is faster brake, accelerate than L
 
+    def move_joint(self):
+        print("MJ <x-axis> <y-axis> <z-axis> <hand_direction> <hand_roll>")
+
 
 robot = Movemaster()
 
