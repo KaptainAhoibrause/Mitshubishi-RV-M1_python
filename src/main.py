@@ -14,8 +14,7 @@ class Movemaster:
         print("<answer>")
 
     def set_speed(self):
-        print("SP <0-9> <H or L>")  # H is faster brake, accelerate than L
-
+        print("SP <0-9> <H or L>")  # H accelerates/brakes faster than L
     def move_joint(self):
         print("MJ <x-axis> <y-axis> <z-axis> <hand_direction> <hand_roll>")
 
