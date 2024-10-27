@@ -1,5 +1,5 @@
 ---
-name: "\U0001F41B Bug Report"
+name: "\U0001F41B Bug Report (Deutsch)"
 about: Melde einen Fehler, der im Projekt aufgetreten ist
 title: "[BUG] Kurze Fehlerbeschreibung"
 labels: bug

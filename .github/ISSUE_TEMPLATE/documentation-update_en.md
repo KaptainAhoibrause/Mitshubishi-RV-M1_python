@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4DA Documentation Update"
+name: "\U0001F4DA Documentation Update (English)"
 about: Suggest an improvement or update to the documentation
 title: "[DOCS] Brief description of the change"
 labels: documentation

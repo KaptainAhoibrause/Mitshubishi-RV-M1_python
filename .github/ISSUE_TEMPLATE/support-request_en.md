@@ -1,5 +1,5 @@
 ---
-name: "❓ Support Request"
+name: "❓ Support Request (English)"
 about: Ask a question or request help
 title: "[SUPPORT] Brief question or issue"
 labels: question
