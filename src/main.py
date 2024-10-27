@@ -1,6 +1,6 @@
 class Movemaster:
     def nesting(self):
-        print("NST")
+        print("NT")
 
     def origin(self):
         print("OG")
