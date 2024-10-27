@@ -6,7 +6,7 @@ labels: bug
 assignees: ''
 
 ---
-
+!!!!!!!!!!!!!Alle Informationen müssen auf Englisch eingegeben werden.!!!!!!!!!!!!!
 **Beschreibung**
 Eine klare und prägnante Beschreibung des Fehlers.
 
