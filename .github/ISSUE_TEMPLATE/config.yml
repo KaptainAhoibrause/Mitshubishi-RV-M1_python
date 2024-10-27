@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a Bug (English)
+    url: /KaptainAhoibrause/Mitsubishi-RV-M1_python/issues/new?template=en/bug_report.md
+    about: Report an issue in English
+  - name: Fehler melden (Deutsch)
+    url: /KaptainAhoibrause/Mitsubishi-RV-M1_python/issues/new?template=de/bug_report.md
+    about: Ein Problem auf Deutsch melden
