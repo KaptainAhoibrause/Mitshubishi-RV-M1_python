@@ -10,6 +10,10 @@ class MainWindow(QWidget):
         # set the window title
         self.setWindowTitle('PowerSupplyUI')
 
+        # button toggled function
+        def toggled(checked):
+            print(checked)
+
         # channel label
         chnl1Label = QLabel()
         chnl1Label.setText("CH 1")
@@ -26,18 +30,22 @@ class MainWindow(QWidget):
         # channel buttons
         chnl1Button = QPushButton()
         chnl1Button.setCheckable(True)
+        chnl1Button.clicked.connect(toggled)
         chnl1Button.setText("on/off")
 
         chnl2Button = QPushButton()
         chnl2Button.setCheckable(True)
+        chnl2Button.clicked.connect(toggled)
         chnl2Button.setText("on/off")
 
         chnl3Button = QPushButton()
         chnl3Button.setCheckable(True)
+        chnl3Button.clicked.connect(toggled)
         chnl3Button.setText("on/off")
 
         chnl4Button = QPushButton()
         chnl4Button.setCheckable(True)
+        chnl4Button.clicked.connect(toggled)
         chnl4Button.setText("on/off")
 
         # place widgets
