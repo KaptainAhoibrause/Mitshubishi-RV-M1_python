@@ -1,5 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QGridLayout
+from PyQt6.QtGui import QIcon
 # from PyQt6.QtCore import Qt
 
 
@@ -27,6 +28,7 @@ class MainWindow(QWidget):
 
         # set the window title
         self.setWindowTitle('PowerSupplyUI')
+        self.setWindowIcon(QIcon('./gui_assets/lightning-34774_640.png'))
 
         # button toggled function
         def toggled(checked):
@@ -37,14 +39,13 @@ class MainWindow(QWidget):
         chnl2Label = Widgets.Label("chnl2Label", "CH 2")
         chnl3Label = Widgets.Label("chnl3Label", "CH 3")
         chnl4Label = Widgets.Label("chnl4Label", "CH 4")
-        outputLabel = Widgets.Label("outputLabel", "OUT")
 
         # channel buttons
         chnl1Button = Widgets.ToggleButton("chnl1Button", "on/off")
         chnl2Button = Widgets.ToggleButton("chnl2Button", "on/off")
         chnl3Button = Widgets.ToggleButton("chnl3Button", "on/off")
         chnl4Button = Widgets.ToggleButton("chnl4Button", "on/off")
-        outputButton = Widgets.ToggleButton("outputButton", "on/off")
+        outputButton = Widgets.ToggleButton("outputButton", "OUT")
 
         # place widgets
         layout = QGridLayout()
@@ -52,13 +53,12 @@ class MainWindow(QWidget):
         layout.addWidget(chnl2Label, 0, 1)
         layout.addWidget(chnl3Label, 0, 2)
         layout.addWidget(chnl4Label, 0, 3)
-        layout.addWidget(outputLabel, 0, 4)
 
         layout.addWidget(chnl1Button, 1, 0)
         layout.addWidget(chnl2Button, 1, 1)
         layout.addWidget(chnl3Button, 1, 2)
         layout.addWidget(chnl4Button, 1, 3)
-        layout.addWidget(outputButton, 1, 4)
+        layout.addWidget(outputButton, 2, 0, 4, 4)
         self.setLayout(layout)
 
         # show the window
