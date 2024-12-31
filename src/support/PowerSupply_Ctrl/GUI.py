@@ -27,6 +27,7 @@ class WindowObjects:
         def __init__(self, name):
             super().__init__()
             self.id = name
+            self.showMessage("GUI Ready")
 
 
 class MainWindow(QMainWindow):
