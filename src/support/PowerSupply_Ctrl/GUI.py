@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QGridLayout
+from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow
 from PyQt6.QtGui import QIcon
 # from PyQt6.QtCore import Qt
 
@@ -22,7 +22,14 @@ class Widgets:
             self.setText(content)
 
 
-class MainWindow(QWidget):
+class WindowObjects:
+    class StatusBar(QStatusBar):
+        def __init__(self, name):
+            super().__init__()
+            self.id = name
+
+
+class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -47,6 +54,9 @@ class MainWindow(QWidget):
         chnl4Button = Widgets.ToggleButton("chnl4Button", "on/off")
         outputButton = Widgets.ToggleButton("outputButton", "OUT")
 
+        statusBar1 = WindowObjects.StatusBar(1)
+        self.setStatusBar(statusBar1)
+
         # place widgets
         layout = QGridLayout()
         layout.addWidget(chnl1Label, 0, 0)
@@ -59,7 +69,11 @@ class MainWindow(QWidget):
         layout.addWidget(chnl3Button, 1, 2)
         layout.addWidget(chnl4Button, 1, 3)
         layout.addWidget(outputButton, 2, 0, 4, 4)
-        self.setLayout(layout)
+
+        # Create a central widget to hold the layout
+        centralWidget = QWidget()
+        centralWidget.setLayout(layout)
+        self.setCentralWidget(centralWidget)
 
         # show the window
         self.show()
