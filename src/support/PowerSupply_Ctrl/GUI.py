@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow
 from PyQt6.QtGui import QIcon
 # from PyQt6.QtCore import Qt
@@ -82,6 +83,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setStyleSheet(Path('src/support/PowerSupply_Ctrl/gui_assets/style.qss').read_text())
 
     # create the main window
     window = MainWindow()
