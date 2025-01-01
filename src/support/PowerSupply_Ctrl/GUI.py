@@ -39,6 +39,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle('PowerSupplyUI')
         self.setWindowIcon(QIcon('./gui_assets/lightning-34774_640.png'))
 
+        self.setGeometry(100, 100, 300, 200)
+
         # button toggled function
         def toggled(checked):
             print(checked)
@@ -48,6 +50,17 @@ class MainWindow(QMainWindow):
         chnl2Label = Widgets.Label("chnl2Label", "CH 2")
         chnl3Label = Widgets.Label("chnl3Label", "CH 3")
         chnl4Label = Widgets.Label("chnl4Label", "CH 4")
+
+        # channel voltage and amp
+        chnl1Volt = Widgets.Label("chnl1Volt", "n.a.")
+        chnl2Volt = Widgets.Label("chnl2Volt", "n.a.")
+        chnl3Volt = Widgets.Label("chnl3Volt", "n.a.")
+        chnl4Volt = Widgets.Label("chnl4Volt", "n.a.")
+
+        chnl1Amp = Widgets.Label("chnl1Amp", "n.a.")
+        chnl2Amp = Widgets.Label("chnl2Amp", "n.a.")
+        chnl3Amp = Widgets.Label("chnl3Amp", "n.a.")
+        chnl4Amp = Widgets.Label("chnl4Amp", "n.a.")
 
         # channel buttons
         chnl1Button = Widgets.ToggleButton("chnl1Button", "on/off")
@@ -62,15 +75,26 @@ class MainWindow(QMainWindow):
         # place widgets
         layout = QGridLayout()
         layout.addWidget(chnl1Label, 0, 0)
-        layout.addWidget(chnl2Label, 0, 1)
-        layout.addWidget(chnl3Label, 0, 2)
-        layout.addWidget(chnl4Label, 0, 3)
+        layout.addWidget(chnl2Label, 1, 0)
+        layout.addWidget(chnl3Label, 2, 0)
+        layout.addWidget(chnl4Label, 3, 0)
 
-        layout.addWidget(chnl1Button, 1, 0)
-        layout.addWidget(chnl2Button, 1, 1)
-        layout.addWidget(chnl3Button, 1, 2)
-        layout.addWidget(chnl4Button, 1, 3)
-        layout.addWidget(outputButton, 2, 0, 4, 4)
+        layout.addWidget(chnl1Volt, 0, 1)
+        layout.addWidget(chnl2Volt, 1, 1)
+        layout.addWidget(chnl3Volt, 2, 1)
+        layout.addWidget(chnl4Volt, 3, 1)
+
+        layout.addWidget(chnl1Amp, 0, 2)
+        layout.addWidget(chnl2Amp, 1, 2)
+        layout.addWidget(chnl3Amp, 2, 2)
+        layout.addWidget(chnl4Amp, 3, 2)
+
+        layout.addWidget(chnl1Button, 0, 3)
+        layout.addWidget(chnl2Button, 1, 3)
+        layout.addWidget(chnl3Button, 2, 3)
+        layout.addWidget(chnl4Button, 3, 3)
+
+        layout.addWidget(outputButton, 4, 0, 1, 4)
 
         # Create a central widget to hold the layout
         centralWidget = QWidget()
