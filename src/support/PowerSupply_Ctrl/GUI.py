@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow
+from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow, QMenuBar
 from PyQt6.QtGui import QIcon
 # from PyQt6.QtCore import Qt
 
@@ -20,6 +20,7 @@ class Widgets:
     class Label(QLabel):
         def __init__(self, name, content):
             super().__init__()
+            self.name = name
             self.setText(content)
 
 
@@ -29,6 +30,10 @@ class WindowObjects:
             super().__init__()
             self.id = name
             self.showMessage("GUI Ready")
+
+    class MenuBar(QMenuBar):
+        def __init__(self):
+            super().__init__()
 
 
 class MainWindow(QMainWindow):
@@ -40,10 +45,6 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon('./gui_assets/lightning-34774_640.png'))
 
         self.setGeometry(100, 100, 300, 200)
-
-        # button toggled function
-        def toggled(checked):
-            print(checked)
 
         # channel label
         chnl1Label = Widgets.Label("chnl1Label", "CH 1")
@@ -69,8 +70,15 @@ class MainWindow(QMainWindow):
         chnl4Button = Widgets.ToggleButton("chnl4Button", "on/off")
         outputButton = Widgets.ToggleButton("outputButton", "OUT")
 
+        # add status bar
         statusBar1 = WindowObjects.StatusBar(1)
         self.setStatusBar(statusBar1)
+
+        # add menu bar
+        menuBar = WindowObjects.MenuBar()
+        File_Menu = menuBar.addMenu("File")
+        File_Menu.addAction("Exit", self.destroy)
+        self.setMenuBar(menuBar)
 
         # place widgets
         layout = QGridLayout()
