@@ -16,6 +16,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             except socket.timeout:
                 print("Timeout: Keine Antwort vom Gerät.")
     except socket.timeout:
-        print("Timeout: Verbindung zum Server konnte nicht hergestellt werden.")
+        print("""Timeout: Verbindung zum Server
+              konnte nicht hergestellt werden.""")
     except Exception as e:
         print("Ein Fehler ist aufgetreten:", e)
