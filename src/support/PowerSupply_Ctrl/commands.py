@@ -1,13 +1,15 @@
 import socket
 
+DEBUG = True
 
 class commands:
     def __init__(self, host, port, timeout_s):
-        self.HOST = host
-        self.PORT = port
-        self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.s.connect((self.HOST, self.PORT))
-        self.s.timeout(timeout_s)
+        if DEBUG != True:
+            self.HOST = host
+            self.PORT = port
+            self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.s.connect((self.HOST, self.PORT))
+            self.s.timeout(timeout_s)
 
     def query_execute(self):
         pass
@@ -18,14 +20,20 @@ class commands:
     def select_channel(self, channel_Id):
         """Selects the channel to change/read its properties."""
         command = "INST:NSEL " + channel_Id + "\n"
-        self.s.sendall(command.encode('ascii'))
+        if DEBUG != True:
+            self.s.sendall(command.encode('ascii'))
+        else:
+            print(command)
 
     def read_selected_channel_id(self):
         """Checks which channel is selected (1/2/3/4)."""
         command = "INST:SEL?" + "\n"
-        self.s.sendall(command.encode('ascii'))
-        response = self.s.recv(1024).decode('ascii')  # Liest Antwort des Gerät
-        show_response(response)
+        if DEBUG != True:
+            self.s.sendall(command.encode('ascii'))
+            response = self.s.recv(1024).decode('ascii')  # Liest Antwort des Gerät
+            show_response(response)
+        else:
+            print(command)
 
     def toggle_channel(self):
         """Turns on the output of the selected channel."""
@@ -39,7 +47,10 @@ class commands:
     def turn_off_channel(self):
         """Turns off the output of the selected channel."""
         command = "OUTP:STATe off" + "\n"
-        self.s.sendall(command.encode('ascii'))
+        if DEBUG != True:
+            self.s.sendall(command.encode('ascii'))
+        else:
+            print(command)
 
     # Turns on the generel output (supplies power)
     def turn_on_output(self):

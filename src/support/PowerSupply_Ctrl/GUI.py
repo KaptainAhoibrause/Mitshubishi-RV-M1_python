@@ -1,10 +1,10 @@
 import sys
 from pathlib import Path
-from PyQt6.QtWidgets import (QApplication, QLabel, QPushButton, QGridLayout,
-                             QStatusBar, QWidget, QMainWindow, QMenuBar)
+from PyQt6.QtWidgets import (QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow, QMenuBar)
 from PyQt6.QtGui import QIcon
-# from PyQt6.QtCore import Qt
+from commands import *
 
+DEFAULT_MESSAGE = "GUI Ready"
 
 class Widgets:
     class ToggleButton(QPushButton):
