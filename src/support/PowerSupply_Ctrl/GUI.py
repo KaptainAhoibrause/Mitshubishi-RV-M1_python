@@ -1,6 +1,5 @@
-import sys
 from pathlib import Path
-from PyQt6.QtWidgets import (QApplication, QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow, QMenuBar)
+from PyQt6.QtWidgets import (QLabel, QPushButton, QGridLayout, QStatusBar, QWidget, QMainWindow, QMenuBar)
 from PyQt6.QtGui import QIcon
 from commands import *
 

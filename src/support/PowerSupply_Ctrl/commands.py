@@ -21,7 +21,7 @@ class commands:
         """Selects the channel to change/read its properties."""
         command = "INST:NSEL " + str(channel_Id) + "\n"
         if DEBUG == True:
-            print(command + "--DEBUG MESSAGE--")
+            print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode('ascii'))
 
@@ -29,7 +29,7 @@ class commands:
         """Checks which channel is selected (1/2/3/4)."""
         command = "INST:SEL?" + "\n"
         if DEBUG == True:
-            print(command + "--DEBUG MESSAGE--")
+            print(">-DEBUG MESSAGE->" + command)
             return None
         else:
             self.s.sendall(command.encode('ascii'))
@@ -55,7 +55,7 @@ class commands:
             commands.select_channel(self, channel_Id)
         command = "OUTP:STATe on" + "\n"
         if DEBUG == True:
-            print(command + "--DEBUG MESSAGE--")
+            print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode("ascii"))
 
@@ -67,7 +67,7 @@ class commands:
             commands.select_channel(self, channel_Id)
         command = "OUTP:STATe off" + "\n"
         if DEBUG == True:
-            print(command + "--DEBUG MESSAGE--")
+            print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode('ascii'))
 
