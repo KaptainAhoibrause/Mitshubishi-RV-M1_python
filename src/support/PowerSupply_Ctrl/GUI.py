@@ -7,16 +7,32 @@ from commands import *
 DEFAULT_MESSAGE = "GUI Ready"
 
 class Widgets:
-    class ToggleButton(QPushButton):
-        def __init__(self, name, label):
+    class ChnlToggleButton(QPushButton):
+        def __init__(self, Id, label):
             super().__init__(label)
-            self.name = name
+            self.Id = Id
+            self.label = label
             self.setCheckable(True)  # Make the button toggleable
-            self.clicked.connect(self.toggled)
+            self.clicked.connect(self.handleClick)
 
-        def toggled(self):
-            # Display the current state (checked or unchecked)
-            print(f"Toggled {self.name} to {self.isChecked()}")
+        def handleClick(self):
+            if self.isChecked():
+                commands.turn_on_channel(self, self.Id)
+            elif not self.isChecked():
+                commands.turn_off_channel(self, self.Id)
+    
+    class OutpToggleButton(QPushButton):
+        def __init__(self, label):
+            super().__init__(label)
+            self.label = label
+            self.setCheckable(True)
+            self.clicked.connect(self.handleClick)
+
+        def handleClick(self):
+            if self.isChecked():
+                commands.turn_on_output(self)
+            elif not self.isChecked():
+                commands.turn_off_output(self)
 
     class Label(QLabel):
         def __init__(self, name, content):
@@ -42,7 +58,10 @@ class MainWindow(QMainWindow):
         super().__init__(*args, **kwargs)
 
         # set the window title
-        self.setWindowTitle('PowerSupplyUI')
+        if DEBUG == True:
+            self.setWindowTitle('PowerSupplyUI -- DEBUG')
+        else:
+            self.setWindowTitle('PowerSupplyUI')
         self.setWindowIcon(QIcon('./gui_assets/lightning-34774_640.png'))
 
         self.setGeometry(100, 100, 300, 200)
@@ -65,11 +84,11 @@ class MainWindow(QMainWindow):
         chnl4Amp = Widgets.Label("chnl4Amp", "n.a.")
 
         # channel buttons
-        chnl1Button = Widgets.ToggleButton("chnl1Button", "on/off")
-        chnl2Button = Widgets.ToggleButton("chnl2Button", "on/off")
-        chnl3Button = Widgets.ToggleButton("chnl3Button", "on/off")
-        chnl4Button = Widgets.ToggleButton("chnl4Button", "on/off")
-        outputButton = Widgets.ToggleButton("outputButton", "OUT")
+        chnl1Button = Widgets.ChnlToggleButton(1, "on/off")
+        chnl2Button = Widgets.ChnlToggleButton(2, "on/off")
+        chnl3Button = Widgets.ChnlToggleButton(3, "on/off")
+        chnl4Button = Widgets.ChnlToggleButton(4, "on/off")
+        outputButton = Widgets.OutpToggleButton("OUT")
 
         # add status bar
         statusBar1 = WindowObjects.StatusBar(1)
