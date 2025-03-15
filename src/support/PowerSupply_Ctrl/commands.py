@@ -19,24 +19,27 @@ class commands:
 
     def select_channel(self, channel_Id):
         """Selects the channel to change/read its properties."""
-        command = "INST:NSEL " + channel_Id + "\n"
-        if DEBUG != True:
-            self.s.sendall(command.encode('ascii'))
+        command = "INST:NSEL " + str(channel_Id) + "\n"
+        if DEBUG == True:
+            print(command + "--DEBUG MESSAGE--")
         else:
-            print(command)
+            self.s.sendall(command.encode('ascii'))
 
     def read_selected_channel_id(self):
         """Checks which channel is selected (1/2/3/4)."""
         command = "INST:SEL?" + "\n"
-        if DEBUG != True:
+        if DEBUG == True:
+            print(command + "--DEBUG MESSAGE--")
+            return None
+        else:
             self.s.sendall(command.encode('ascii'))
             response = self.s.recv(1024).decode('ascii')  # Liest Antwort des Gerät
             show_response(response)
-        else:
-            print(command)
+            return response
 
-    def toggle_channel(self):
-        """Turns on the output of the selected channel."""
+
+    def toggle_channel(self, channel_Id):
+        """Turns on the output of a specified channel."""
         # DOES NOT WORK ############################
         # command = "OUTP:STAT ?" + "\n"
         # self.s.sendall(command.encode('ascii'))
@@ -44,13 +47,30 @@ class commands:
         # response = self.s.recv(1024).decode('ascii')
         # self.turn_off_output()
 
-    def turn_off_channel(self):
-        """Turns off the output of the selected channel."""
-        command = "OUTP:STATe off" + "\n"
-        if DEBUG != True:
-            self.s.sendall(command.encode('ascii'))
+    def turn_on_channel(self, channel_Id):
+        """Turns on the output of a specified channel"""
+        if commands.read_selected_channel_id(self) == channel_Id:
+            pass
         else:
-            print(command)
+            commands.select_channel(self, channel_Id)
+        command = "OUTP:STATe on" + "\n"
+        if DEBUG == True:
+            print(command + "--DEBUG MESSAGE--")
+        else:
+            self.s.sendall(command.encode("ascii"))
+
+    def turn_off_channel(self, channel_Id):
+        """Turns off the output of a specified channel."""
+        if commands.read_selected_channel_id(self) == channel_Id:
+            pass
+        else:
+            commands.select_channel(self, channel_Id)
+        command = "OUTP:STATe off" + "\n"
+        if DEBUG == True:
+            print(command + "--DEBUG MESSAGE--")
+        else:
+            self.s.sendall(command.encode('ascii'))
+
 
     # Turns on the generel output (supplies power)
     def turn_on_output(self):
