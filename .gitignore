@@ -163,4 +163,4 @@ cython_debug/
 # custom
 temp/
 src/support/PowerSupply_Ctrl/__pycache__/
-.vs
+.vs*
