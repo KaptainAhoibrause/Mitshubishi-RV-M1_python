@@ -2,9 +2,10 @@ import socket
 
 DEBUG = True
 
+
 class commands:
     def __init__(self, host, port, timeout_s):
-        if DEBUG != True:
+        if DEBUG is not True:
             self.HOST = host
             self.PORT = port
             self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,7 +21,7 @@ class commands:
     def select_channel(self, channel_Id):
         """Selects the channel to change/read its properties."""
         command = "INST:NSEL " + str(channel_Id) + "\n"
-        if DEBUG == True:
+        if DEBUG is True:
             print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode('ascii'))
@@ -28,15 +29,15 @@ class commands:
     def read_selected_channel_id(self):
         """Checks which channel is selected (1/2/3/4)."""
         command = "INST:SEL?" + "\n"
-        if DEBUG == True:
+        if DEBUG is True:
             print(">-DEBUG MESSAGE->" + command)
             return None
         else:
             self.s.sendall(command.encode('ascii'))
-            response = self.s.recv(1024).decode('ascii')  # Liest Antwort des Gerät
+            # Liest Antwort des Gerät
+            response = self.s.recv(1024).decode('ascii')
             show_response(response)
             return response
-
 
     def toggle_channel(self, channel_Id):
         """Turns on the output of a specified channel."""
@@ -54,7 +55,7 @@ class commands:
         else:
             commands.select_channel(self, channel_Id)
         command = "OUTP:STATe on" + "\n"
-        if DEBUG == True:
+        if DEBUG is True:
             print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode("ascii"))
@@ -66,11 +67,10 @@ class commands:
         else:
             commands.select_channel(self, channel_Id)
         command = "OUTP:STATe off" + "\n"
-        if DEBUG == True:
+        if DEBUG is True:
             print(">-DEBUG MESSAGE->" + command)
         else:
             self.s.sendall(command.encode('ascii'))
-
 
     # Turns on the generel output (supplies power)
     def turn_on_output(self):
